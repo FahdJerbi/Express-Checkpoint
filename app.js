@@ -10,33 +10,33 @@ function checkTime(res, res, next) {
   console.log("middleware is activated");
   let hours = new Date().getHours();
   let days = new Date().getDay();
-  if (hours >= 9 || hours <= 17) {
-    res.render("closed");
-  } else {
+  if (hours >= 9 || hours <= 17 || days == 0 || days == 6) {
     res.render("home");
+    next();
+  } else {
+    res.render("closed");
   }
-
-  next();
 }
 
 ////////////////////////////////////      Routes        //////////////////////
 // create the get route for 'Home' page
-app.get("/", checkTime, function (req, res) {
-  console.log("serveur 7al 3al 'Home' Page ...");
-  // res.render("home");
+app.get("/", checkTime, (req, res) => {
+  console.log("server on 'Home' Page ...");
 });
 
 // create get route for 'Services' page
-app.get("/services", function (req, res) {
-  console.log("serveur 7al 3al 'Services' Page ...");
+app.get("/services", (req, res) => {
+  console.log("server on 'Services' Page ...");
   res.render("services");
 });
 
 // get route for contact us page
-app.get("/contact", function (req, res) {
-  console.log("serveur 7al 3al 'Contact' page");
+app.get("/contact", (req, res) => {
+  console.log("server on 'Contact' page ...");
   res.render("contact");
 });
 
 //////////////////////// Listen to port 3000    ////////////////////////////////
-app.listen(3000);
+app.listen(3000, (req, res) => {
+  console.log("Server is running on port 3000, great !");
+});

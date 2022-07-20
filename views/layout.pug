@@ -1,17 +1,21 @@
 html
     head
-        title My Application 
+        title My Application
+        style
+            include styles.css
     body
-        ul
-            li
-                a(href="/") Home
-            li
-                a(href="/services") Services
-            li
-                a(href="/contact") Contact 
-        
+        nav
+            ul
+                li
+                    a(href="/") Home
+                li
+                    a(href="/services") Services
+                li
+                    a(href="/contact") Contact         
         block content 
 
-        h4 Working hours: 
-        h5 Monday - Friday 
-        h5 9:00 AM to 17:00 PM
+        div(class= 'working-hours')
+            h4 Working hours: 
+            h5 
+                em Monday - Friday
+                em  |   9:00 AM to 5:00 PM

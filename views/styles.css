@@ -1,0 +1,13 @@
+body {
+  text-align: center;
+  background-color: bisque;
+}
+
+nav ul {
+  border: 1px solid black;
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  color: white;
+  font-size: x-large;
+}
