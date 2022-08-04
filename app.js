@@ -10,7 +10,7 @@ function checkTime(res, res, next) {
   console.log("middleware is activated");
   let hours = new Date().getHours();
   let days = new Date().getDay();
-  if (hours >= 9 || hours <= 17 || days == 0 || days == 6) {
+  if (hours >= 9 && hours <= 17 && days == 0 && days == 6) {
     res.render("home");
     next();
   } else {
@@ -25,13 +25,13 @@ app.get("/", checkTime, (req, res) => {
 });
 
 // create get route for 'Services' page
-app.get("/services", (req, res) => {
+app.get("/services",checkTime, (req, res) => {
   console.log("server on 'Services' Page ...");
   res.render("services");
 });
 
 // get route for contact us page
-app.get("/contact", (req, res) => {
+app.get("/contact",checkTime, (req, res) => {
   console.log("server on 'Contact' page ...");
   res.render("contact");
 });
